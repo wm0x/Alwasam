@@ -13,8 +13,28 @@
 1. قم بتنزيل المشروع:
    ```bash
    git clone https://github.com/wm0x/Alwasam.git
-   cd Alwasam
+   cd Alwasam```
+
+بعدها لتشغيل الموقع محليا افتح المشروع في vs 
+
+ثم 
+
+
+قم بأدخال احدى الطرق التاليه 
+
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
 =======
 # Alwasam
 >>>>>>>
+
+
