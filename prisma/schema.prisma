@@ -18,15 +18,67 @@ datasource db {
 }
 
 
+
+// المقصود ب اليوزر هننا الموظفين لان هم المستخدم الرئيسي للنظام
 model User {
-  id                    String    @id @default(cuid())
-  name                  String?
-  username              String? 
-  phone                 String?
-  image                 String?
-  password              String?
-  type                  String?
-  @@map("users")
+  id            String   @id @default(cuid())
+  username      String
+  password      String
+  phone         String?  
+  national_id   String?   // رقم الهويه
+  name          String?
+  email         String?
+  image         String?  
+  salary        Decimal?  // الراتب
+  jobTitle      String?   // المسمى الوظيفي
+  startDate     DateTime? // تاريخ التوظيف
+  department    String?   // القسم
+  
+  branchId      String?  // الفرع
+
+
+  roles         Role[]       @relation("UserRoles") 
+  branch        Branch?  @relation(fields: [branchId], references: [id])  // علاقه مع البرانش
+
+  permissions   Permission[] @relation( "UserPermissions" ) // هذا اسم الجدول اللي راح تكون فيه العلاقه مع ال
+
+  @@map("users") 
+}
+
+model Branch {
+  id          String   @id @default(cuid()) 
+  name        String   
+  location    String   // موقع الفرع
+  employees   User[]   // One to many relation الوظفين في هذا الفرع
+
+  @@map("branches")  // اسم الجدول في قاعدة البيانات
+}
+
+
+
+// الصلاحيات الخاصه مثلا موظف ال HR واحد بس يقدر يعدل على بيانات العملاء 
+model Permission {
+  id          String    @id @default(cuid())  
+  name        String    @unique              
+  description String    
+  
+  users       User[]    @relation("UserPermissions")
+  roles       Role[]    @relation("RolePermissions")
+  
+  @@map("permissions")
+}
+
+
+// هنا غير عندنا مثلا كل موضفين الاستقبال يستطيعيون ايجار السيارات وعلى هذا السياق
+model Role {
+  id          String       @id @default(cuid())  
+  name        String       @unique               
+  description String      
+  
+  permissions Permission[] @relation("RolePermissions")
+  users       User[]       @relation("UserRoles")
+  
+  @@map("roles")
 }
 
 

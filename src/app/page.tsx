@@ -12,6 +12,8 @@ import { IoMdLogIn } from "react-icons/io";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function Home() {
+
+  
   return (
     <div className=" min-h-screen bg-[#1d1d1d] overflow-hidden">
       <header className="sticky top-0 py-4 z-50 flex items-center justify-center">
@@ -137,7 +139,7 @@ export default function Home() {
             src="/g90-removebg-preview.png"
             alt="g90"
             className="object-contain max-w-full h-auto z-10"
-          />
+          /> 
 
           <div
             className="flex items-center justify-center text-center mt-8 w-full"

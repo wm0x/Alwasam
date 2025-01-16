@@ -1,11 +1,28 @@
 "use client";
 
 import * as React from "react";
-import { IoCarSportOutline } from "react-icons/io5";
+
+
+
+
+//icons...
+import { Users } from 'lucide-react';
 import { SquareTerminal } from "lucide-react";
+import { UserPlus } from "lucide-react"; 
+import { UserRoundCheck } from "lucide-react";
+import { FileUser } from "lucide-react";
+
+
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
+
+
+
+import { IoCarSportOutline } from "react-icons/io5";
+
+
+//components
 import {
   Sidebar,
   SidebarContent,
@@ -26,22 +43,46 @@ import {
   IconWeCar,
 } from "../../public/myIcons/Icons";
 
-// Define roles and permissions
+
+
 const roles = {
   admin: ["cars", "employees", "reservations", "reports", "settings"],
   staff: ["cars", "reservations"],
   customer: ["reservations"],
 };
 
-// Data for the sidebar menu
 const data = {
   user: {
     name: "Ali",
-    email: "wm@wm.com",
+    email: "مبرمج",
     avatar:
       "https://i.ibb.co/gwxLZ4R/DALL-E-2024-11-03-15-45-08-A-high-quality-user-profile-aatar-with-no-background-designed-to-complem.webp",
   },
   navMain: [
+    {
+      title: "الموظفين",
+      url: "#",
+      icon: Users,
+      isActive: false,
+      permission: "employees", // Permission key
+      items: [
+        {
+          title: "إضافة موظف",
+          icon: UserPlus,
+          url: "#",
+        },
+        {
+          title: "الموظفين الحاليين",
+          icon: UserRoundCheck,
+          url: "#",
+        },
+        {
+          title: "نشاط الموظف ",
+          icon: FileUser,
+          url: "#",
+        },
+      ],
+    },
     {
       title: "السيارات",
       url: "",
@@ -82,31 +123,6 @@ const data = {
       ],
     },
     {
-      title: "الموظفين",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: false,
-      permission: "employees", // Permission key
-      items: [
-        {
-          title: "الموظفين الحاليين",
-          url: "#",
-        },
-        {
-          title: "إضافة موظف",
-          url: "#",
-        },
-        {
-          title: "تقييم الموظفين",
-          url: "#",
-        },
-        {
-          title: "جدولة المهام",
-          url: "#",
-        },
-      ],
-    },
-    {
       title: "الحجوزات",
       url: "#",
       icon: SquareTerminal,
@@ -139,10 +155,6 @@ const data = {
       permission: "reports", // Permission key
       items: [
         {
-          title: "تقارير الأرباح",
-          url: "#",
-        },
-        {
           title: "تقارير الحجوزات",
           url: "#",
         },
@@ -150,27 +162,15 @@ const data = {
           title: "تقارير الصيانة",
           url: "#",
         },
-        {
-          title: "تقارير الأداء",
-          url: "#",
-        },
       ],
     },
     {
-      title: "الإعدادات",
+      title: "الصلاحيات",
       url: "#",
       icon: SquareTerminal,
       isActive: false,
       permission: "settings", // Permission key
       items: [
-        {
-          title: "إعدادات الشركة",
-          url: "#",
-        },
-        {
-          title: "إعدادات الحساب",
-          url: "#",
-        },
         {
           title: "إدارة الأدوار والصلاحيات",
           url: "#",
@@ -186,7 +186,7 @@ function filterNavItems(navItems: any[], userRole: string) {
 }
 
 export function AppSidebar({
-  userRole = "staff", // Default role for demonstration
+  userRole = "admin",
   ...props
 }: React.ComponentProps<typeof Sidebar> & { userRole?: string }) {
   const filteredNavMain = filterNavItems(data.navMain, userRole);

@@ -15,6 +15,10 @@
    git clone https://github.com/wm0x/Alwasam.git
    cd Alwasam```
 
+
+---
+
+
 بعدها لتشغيل الموقع محليا افتح المشروع في vs 
 
 ثم 
