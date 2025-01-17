@@ -33,6 +33,7 @@ export const getUserByUsername = async (username: string) => {
   }
 };
 
+"update -> fix problems"
 
 
 //! must add get permission by user id or username or anything
