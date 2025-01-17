@@ -10,13 +10,10 @@ export const getUserById = async (id: string) => {
   
       if (!user) {
         console.error(`User not found with ID: ${id}`);
-        return null; // If user doesn't exist, return null
+        return null; 
       }
-  
-      console.log("User found:", user);
-      return user; // Return the user if found
+        return user; 
     } catch (error: any) {
-      // Log the actual error message from Prisma
       console.error("Error fetching user by ID:", error.message);
       throw new Error(`Database query failed: ${error.message}`);
     }

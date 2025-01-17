@@ -24,7 +24,7 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="bg-gray-400">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           الوضع الفاتح
         </DropdownMenuItem>
@@ -32,7 +32,7 @@ export function ModeToggle() {
           الوضع الداكن
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          نفس النضام
+          النظام
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

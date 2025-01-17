@@ -1,18 +1,11 @@
 "use server";
 
-// import zod lib
 import * as z from "zod";
-// this import for hash passwords
-//import form auth lib
-import { signIn } from "@/auth";
-import { AuthError } from "next-auth";
-
-// import from schemas
-import { LoginSchema } from "../schemas/login-index";
-
-// this for verification
-import { getUserByUsername } from "../data/user";
 import bcrypt from "bcryptjs";
+import { signIn } from "@/auth";
+import { LoginSchema } from "../schemas/login-index";
+import { getUserByUsername } from "../data/user";
+import { DEFAULT_LOGIN_REDIRECT } from "../src/routes";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validDataFields = LoginSchema.safeParse(values);
@@ -38,16 +31,16 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   if (!isPasswordMatch) {
     return { error: " حدث خطأ اثناء تسجيل الدخول " };
   }
-  // now must be i redirect user to dash board but i have qoustuin must be return with user his usertype why ? beacuse i have permission for every usertype or in dashboard get the user type ?
-    const redirectTo = "/dashboard"
 
-    await signIn("credentials", {
-      username,
-      password,
-      redirectTo, // take it form the up object
-    });
-  return {
-    success: true,
-    message: " تم تسجيل الدخول بنجاح ",
-  };
+  const result = await signIn("credentials", {
+    username,
+    password,
+    redirect: false, // هنا حل المشكله اللي تحت
+  });
+
+  if (result?.error) {
+    return { error: result.error || "حدث خطأ أثناء تسجيل الدخول" };
+  }
+  // there his give me problem it is in path of website .. if i login it is redirect me to the what i want website but the path localhost:3000 still path:3000/auth/login not path:3000/dashboard that what i want.. what is solution it's in redirect in the up before i use redirect : true => DEFAULT_REDIRECT... as like this 
+  return { success: true, redirectUrl: DEFAULT_LOGIN_REDIRECT };
 };

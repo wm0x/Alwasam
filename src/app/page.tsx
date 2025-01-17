@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 //icons
-
+import { CiLinkedin } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 import { SlSocialYoutube } from "react-icons/sl";
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className=" min-h-screen bg-[#1d1d1d] overflow-hidden">
       <header className="sticky top-0 py-4 z-50 flex items-center justify-center">
-        <div className="container">
+        <div className="container sticky top-0 ">
           <div className="relative flex justify-between border-2 border-[#d8b043]/15 p-2.5 rounded-xl overflow-hidden">
             <div className="absolute inset-0 backdrop-blur z-[-1]"></div>
             <div className="flex items-center">
@@ -167,7 +167,7 @@ export default function Home() {
           <ul className="flex gap-y-2 gap-x-8 text-3xl">
             <li>
               <a
-                href="#" //whatsapp phone linked
+                href="#" //whatsapp 
                 className="text-slate-300 hover:text-green-500 transition duration-300 ease-in-out transform hover:scale-110"
               >
                 <FaWhatsapp />
@@ -175,7 +175,7 @@ export default function Home() {
             </li>
             <li>
               <a
-                href="#" //snapshat linked phone
+                href="#" //snapchat 
                 className="text-slate-300 hover:text-yellow-300 transition duration-300 ease-in-out transform hover:scale-110"
               >
                 <PiSnapchatLogoBold />
@@ -183,18 +183,18 @@ export default function Home() {
             </li>
             <li>
               <a
-                href="#" //youtube linked chaneel
-                className="text-slate-300 hover:text-red-500 transition duration-300 ease-in-out transform hover:scale-110"
+                href="#" // twitter
+                className="text-slate-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110"
               >
-                <SlSocialYoutube />
+                <RiTwitterXFill />
               </a>
             </li>
             <li>
               <a
-                href="#" // twitter linked account
+                href="#" // twitter
                 className="text-slate-300 hover:text-blue-500 transition duration-300 ease-in-out transform hover:scale-110"
               >
-                <RiTwitterXFill />
+                <CiLinkedin />
               </a>
             </li>
           </ul>

@@ -36,8 +36,8 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-xl" dir="rtl">
-        لوحة التحكم
+      <SidebarGroupLabel className="text-xs text-pretty" dir="rtl">
+        عناصر التحكم
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
@@ -49,9 +49,15 @@ export function NavMain({
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title} dir="rtl" className="text-lg">
-                  {item.icon && <item.icon className="text-[#D45D69]" />}
-                  <span className="">{item.title}</span>
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  dir="rtl"
+                  className="text-lg "
+                >
+                  {item.icon && (
+                    <item.icon className="text-[#882D37] " />
+                  )}{" "}
+                  <span>{item.title}</span>
                   <ChevronLeft className="mr-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -62,7 +68,9 @@ export function NavMain({
                       <SidebarMenuSubButton asChild>
                         <Link href={subItem.url}>
                           {subItem.icon && (
-                            <span><subItem.icon className="mr-2 text-[#D45D69] size-4" /></span>
+                            <span>
+                              <subItem.icon className="mr-2 text-[#D8B043] " />
+                            </span>
                           )}
                           <span>{subItem.title}</span>
                         </Link>

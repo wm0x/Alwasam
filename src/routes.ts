@@ -29,4 +29,4 @@ export const apiAuthPrefix = ["/api/auth"];
  * @type {string}
  */
 
-export const DEFAULT_LOGIN_REDIRECT = "/settings"; // you can change it to dashboard or any thing else settings 
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard"; // you can change it to dashboard or any thing else settings 

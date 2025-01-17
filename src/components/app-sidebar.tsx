@@ -2,25 +2,17 @@
 
 import * as React from "react";
 
-
-
-
 //icons...
-import { Users } from 'lucide-react';
+import { Home, Search, Users } from "lucide-react";
 import { SquareTerminal } from "lucide-react";
-import { UserPlus } from "lucide-react"; 
+import { UserPlus } from "lucide-react";
 import { UserRoundCheck } from "lucide-react";
 import { FileUser } from "lucide-react";
-
-
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 
-
-
 import { IoCarSportOutline } from "react-icons/io5";
-
 
 //components
 import {
@@ -42,8 +34,7 @@ import {
   IconRouteCar,
   IconWeCar,
 } from "../../public/myIcons/Icons";
-
-
+import { PrimaryNav } from "./PrimaryNav";
 
 const roles = {
   admin: ["cars", "employees", "reservations", "reports", "settings"],
@@ -57,7 +48,13 @@ const data = {
     email: "مبرمج",
     avatar:
       "https://i.ibb.co/gwxLZ4R/DALL-E-2024-11-03-15-45-08-A-high-quality-user-profile-aatar-with-no-background-designed-to-complem.webp",
-  },
+  },  PrimaryNav: [
+    {
+      title: "الصفحه الرئيسيه",
+      url: "#",
+      icon: Home,
+    },
+  ],
   navMain: [
     {
       title: "الموظفين",
@@ -196,7 +193,7 @@ export function AppSidebar({
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton size="lg" asChild className="bg-zinc-700/20 hover:bg- ">
               <a href="#">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg">
                   <img src="/logo-alwasam.png" />
@@ -205,7 +202,7 @@ export function AppSidebar({
                   <span className="truncate text-lg font-semibold tracking-tighter bg-gradient-to-br from-[#ff8a00] via-[#e52e71] to-[#882d37] text-transparent bg-clip-text">
                     الوسام
                   </span>
-                  <span className="truncate text-md font-semibold tracking-tighter bg-gradient-to-r from-[#ff0099] via-[#d8b043] to-[#d8b043] text-transparent bg-clip-text">
+                  <span className="truncate text-md font-semibold tracking-tighter bg-gradient-to-r from-[#ff0099] via-[#d8b043] to-[#d8b043] text-transparent bg-clip-text mb-2">
                     لتأجير السيارات
                   </span>
                 </div>
@@ -220,6 +217,7 @@ export function AppSidebar({
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        <PrimaryNav items={data.PrimaryNav} />
         <NavMain items={filteredNavMain} />
       </SidebarContent>
       <SidebarFooter>

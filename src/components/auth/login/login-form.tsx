@@ -20,8 +20,11 @@ import {
 } from "@/components/ui/form";
 import { FormError } from "@/components/ui/form-error";
 import { FormSuccess } from "@/components/ui/form-success";
+import { useRouter } from "next/navigation";
+
 
 export const LoginForm = () => {
+  const router = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -42,12 +45,17 @@ export const LoginForm = () => {
   const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
-
+  
     startTransition(async () => {
       const data = await login(values);
       if (data?.error) {
         form.reset();
         setError(data.error);
+        return;
+      }
+  
+      if (data?.success) {
+        router.push(data.redirectUrl); 
       }
     });
   };
