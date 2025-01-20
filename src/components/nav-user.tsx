@@ -34,8 +34,8 @@ export function NavUser({
   const router = useRouter();
 
   const onSignOut = async () => {
-    await handleSignOut(); 
-    router.push("/auth/login"); 
+    await handleSignOut();
+    router.push("/auth/login");
   };
 
   return (
@@ -59,38 +59,38 @@ export function NavUser({
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg "
             side={isMobile ? "bottom" : "right"}
-            align="end"
+            align="center"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="p-0 font-normal">
+            <DropdownMenuLabel className="p-0 font-normal ">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                <div className="grid flex-1 text-sm leading-tight text-center">
+                  <span className="truncate font-semibold">{user.name}</span>
+                  <span className="truncate text-xs">{user.email}</span>
+                </div>
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
                   <AvatarFallback className="rounded-lg">WA</AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
-                </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup dir="rtl">
-              <DropdownMenuItem>
-                <UserCog />
+              <DropdownMenuItem className="flex justify-between">
                 معلوماتي
+                <UserCog />
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={onSignOut}
               dir="rtl"
-              className="text-white bg-red-600 hover:bg-red-400 cursor-pointer"
+              className="text-white bg-red-600 hover:bg-red-400 cursor-pointer flex justify-between"
             >
-              <LogOut />
               تسجيل خروج
+              <LogOut />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

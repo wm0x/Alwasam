@@ -76,6 +76,7 @@ export const LoginForm = () => {
                         {...field}
                         disabled={isPending}
                         className="bg-white hover:border-red-300 text-black"
+                        autoComplete="current-username"
                         placeholder="اسم المستخدم"
                       />
                     </FormControl>
@@ -94,6 +95,7 @@ export const LoginForm = () => {
                         disabled={isPending}
                         placeholder="كلمة المرور"
                         className="bg-white hover:border-red-300 text-black mt-2"
+                        autoComplete="current-password"
                         type={showPassword ? "text" : "password"}
                       />
                     </FormControl>

@@ -1,5 +1,4 @@
 import { AppSidebar } from "@/components/app-sidebar";
-import { ModeToggle } from "@/components/mode-toggle";
 import {
   SidebarInset,
   SidebarProvider,
@@ -16,11 +15,6 @@ export default function Page({ children }: { children: React.ReactNode }) {
           <SidebarTrigger className="-ml-1 mt-2" />
           {children}
         </SidebarInset>
-        <div className="relative">
-          <div className="absolute bottom-4 left-4">
-            <ModeToggle />
-          </div>
-        </div>
       </SidebarProvider>
     </div>
   );

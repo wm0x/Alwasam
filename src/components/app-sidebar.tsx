@@ -35,6 +35,7 @@ import {
   IconWeCar,
 } from "../../public/myIcons/Icons";
 import { PrimaryNav } from "./PrimaryNav";
+import { ModeToggle } from "./mode-toggle";
 
 const roles = {
   admin: ["cars", "employees", "reservations", "reports", "settings"],
@@ -48,7 +49,8 @@ const data = {
     email: "مبرمج",
     avatar:
       "https://i.ibb.co/gwxLZ4R/DALL-E-2024-11-03-15-45-08-A-high-quality-user-profile-aatar-with-no-background-designed-to-complem.webp",
-  },  PrimaryNav: [
+  },
+  PrimaryNav: [
     {
       title: "الصفحه الرئيسيه",
       url: "#",
@@ -189,12 +191,16 @@ export function AppSidebar({
   const filteredNavMain = filterNavItems(data.navMain, userRole);
 
   return (
-    <Sidebar collapsible="icon" side="right" dir="rtl" {...props}>
+    <Sidebar collapsible="icon" side="right" dir="rtl" className="h-[95%] my-[auto] border shadow-2xl rounded-xl" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="bg-zinc-700/20 hover:bg- ">
-              <a href="#">
+            <SidebarMenuButton
+              size="lg"
+              asChild
+              className="hover:bg-transparent"
+            >
+              <div>
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg">
                   <img src="/logo-alwasam.png" />
                 </div>
@@ -206,13 +212,9 @@ export function AppSidebar({
                     لتأجير السيارات
                   </span>
                 </div>
-              </a>
-            </SidebarMenuButton>
-            <div className="divider relative mt-4 flex justify-center">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#882d37] to-transparent opacity-80 rounded-md shadow-lg"></div>
               </div>
-            </div>
+            </SidebarMenuButton>
+            <div className="w-full mt-4 h-[2px] bg-gradient-to-r from-transparent via-[#969696] to-transparent opacity-80 rounded-xl shadow-lg"></div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -222,6 +224,10 @@ export function AppSidebar({
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
+
+        <div className="border-black border rounded dark:border-white">
+          <ModeToggle />
+        </div>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

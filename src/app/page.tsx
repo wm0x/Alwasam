@@ -15,8 +15,8 @@ export default function Home() {
 
   
   return (
-    <div className=" min-h-screen bg-[#1d1d1d] overflow-hidden">
-      <header className="sticky top-0 py-4 z-50 flex items-center justify-center">
+    <div className=" min-h-screen bg-[#1d1d1d] overflow-hidden p-2">
+      <header className="sticky top-0 py-4 z-50 flex items-center justify-center p-2">
         <div className="container sticky top-0 ">
           <div className="relative flex justify-between border-2 border-[#d8b043]/15 p-2.5 rounded-xl overflow-hidden">
             <div className="absolute inset-0 backdrop-blur z-[-1]"></div>

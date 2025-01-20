@@ -2,22 +2,27 @@ import { db } from "@/lib/db";
 
 // there we need to get info about user like his name ex... في هذا الملف هو المرجع لنا عند البحث عن اي مستخدك فالنضام
 export const getUserById = async (id: string) => {
-    try {
-      console.log("Fetching user with ID:", id);
-      const user = await db.user.findUnique({
-        where: { id },
-      });
-  
-      if (!user) {
-        console.error(`User not found with ID: ${id}`);
-        return null; 
-      }
-        return user; 
-    } catch (error: any) {
-      console.error("Error fetching user by ID:", error.message);
-      throw new Error(`Database query failed: ${error.message}`);
+  try {
+    console.log("Fetching user with ID:", id);
+
+    const user = await db.user.findUnique({
+      where: { id },
+    });
+
+    if (!user) {
+      console.warn(`User not found with ID: ${id}`);
+      return null;
     }
-  };
+
+    return user;
+  } catch (error: any) {
+    console.error("Error fetching user by ID:", error);
+    if (error.code) {
+      console.error(`Prisma Error Code: ${error.code}`);
+    }
+    throw new Error(`Database query failed: ${error.message}`);
+  }
+};
   
 
 // i think there is error must be change it to findUnique but i will do check if i want create user if in db i have same username
